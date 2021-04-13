@@ -29,5 +29,6 @@ int moveIndex(char *usrinput);
 char *_strdup(char *str);
 int _putchar(char c);
 char **handleEmptyString();
+int _strcmp2(char *s1, char *s2);
 
 #endif
