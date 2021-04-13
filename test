@@ -68,3 +68,7 @@ echo
 echo -e "\t  ls" | ./myshell
 echo -e "\t  ls" | /bin/sh
 echo
+
+echo "           exit" | ./myshell
+echo will not tr exit on real shell, exit pre-fixed by a bunch of spaces
+echo --

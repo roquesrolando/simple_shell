@@ -9,14 +9,13 @@ char **input(void)
 	ssize_t length;
 	size_t inputSize = 50;
 	char *usrinput = NULL, *newInput = NULL;
-	int count;
+	int count, exitCommand;
 
 	if (isatty(STDIN_FILENO) == 1)
 	{
 		_putchar('$');
 		_putchar(' ');
 	}
-
 	length = getline(&usrinput, &inputSize, stdin);
 
 	if (length == EOF || (length == 1 && (isatty(STDIN_FILENO) == 0)))
@@ -35,10 +34,11 @@ char **input(void)
 	}
 	usrinput[length - 1] = '\0';
 
-	if ((_strcmp("exit", usrinput)) == 0)
+	exitCommand = exitString(usrinput);
+	if (exitCommand == 0)
 	{
 		free(usrinput);
-		return (NULL);
+		return(NULL);
 	}
 
 	for (count = 0; usrinput[count] != '\0'; count++)
