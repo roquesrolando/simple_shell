@@ -8,8 +8,7 @@ char **input(void)
 {
 	ssize_t length;
 	size_t inputSize = 50;
-	char *usrinput = NULL;
-	char *newInput = NULL;
+	char *usrinput = NULL, *newInput = NULL;
 	int count;
 
 	if (isatty(STDIN_FILENO) == 1)
@@ -34,7 +33,7 @@ char **input(void)
 			length = getline(&usrinput, &inputSize, stdin);
 		}
 	}
-	if (length == 1 && (isatty(STDIN_FILENO) == 0))	
+	if (length == 1 && (isatty(STDIN_FILENO) == 0))
 	{
 		free(usrinput);
 		return (NULL);

@@ -45,11 +45,6 @@ int main(int ac, char **av, char **env)
 		free(fullPath);
 		freeDoublePointers(commandLineArgs);
 
-		/*if (isatty(STDIN_FILENO) == 0)
-		{
-			exit(1);
-			free(patharray);
-		}*/
 	}
 	free(patharray);
 	return (0);
