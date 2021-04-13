@@ -55,7 +55,7 @@ char **get_path(char **env)
  */
 char *pathInput(char *usrinput)
 {
-	int count, count2 = 0, index1 = 0, lastBracketIndex = 0;
+	int count, count2 = 0, index1 = 0, lastBracketIndex = 0, num = 0;
 	char *modedUsrInput;
 
 	modedUsrInput = malloc(sizeof(char) * 100);
@@ -68,10 +68,11 @@ char *pathInput(char *usrinput)
 		if (usrinput[count] == '/')
 		{
 			lastBracketIndex = count;
+			num++;
 		}
 	}
 
-	if (usrinput[lastBracketIndex + 1] == '\0')
+	if (usrinput[lastBracketIndex + 1] == '\0' || (num == 0))
 	{
 		free(modedUsrInput);
 		return (usrinput);
@@ -122,3 +123,4 @@ char *_strdup(char *str)
 
 	return (copiedString);
 }
+

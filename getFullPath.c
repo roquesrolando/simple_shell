@@ -12,6 +12,7 @@ char *getFullPath(char **patharray, char **commandLineArgs)
 	DIR *directory = NULL;
 	struct dirent *binaryFiles = NULL;
 	int count;
+
 	errno = ENOENT;
 
 	for (count = 0; patharray[count] != NULL; count++)

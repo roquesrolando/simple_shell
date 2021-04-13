@@ -18,12 +18,12 @@ char **input(void)
 	}
 
 	length = getline(&usrinput, &inputSize, stdin);
-	if (length == EOF)
+
+	if (length == EOF || (length == 1 && (isatty(STDIN_FILENO) == 0)))
 	{
 		free(usrinput);
 		return (NULL);
 	}
-
 	if (length == 1 && (isatty(STDIN_FILENO) == 1))
 	{
 		while (length == 1)
@@ -33,12 +33,6 @@ char **input(void)
 			length = getline(&usrinput, &inputSize, stdin);
 		}
 	}
-	if (length == 1 && (isatty(STDIN_FILENO) == 0))
-	{
-		free(usrinput);
-		return (NULL);
-	}
-
 	usrinput[length - 1] = '\0';
 
 	if ((_strcmp("exit", usrinput)) == 0)
@@ -57,7 +51,6 @@ char **input(void)
 				free(newInput);
 				return (getArray(usrinput));
 			}
-
 			return (getArray(newInput));
 		}
 	}
