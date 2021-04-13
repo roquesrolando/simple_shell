@@ -7,13 +7,15 @@ int exitString(char *usrinput)
 
 	index1 = moveIndex(usrinput);
 
-	temp = malloc(sizeof(char) * 120);
+	temp = malloc(sizeof(char) * 5);
 
-	for (count = 0; usrinput[index1] != '\0'; count++)
+	for (count = 0; usrinput[index1] != '\0' || count < 4; count++)
 	{
 		temp[count] = usrinput[index1];
 		index1++;
 	}
+	temp[count] = '\0';
+
 
 	if ((_strcmp("exit", temp)) == 0)
 	{
