@@ -44,10 +44,6 @@ echo "exit" | ./myshell
 echo "exit" | /bin/sh
 echo
 
-echo "env" | ./myshell
-echo "env" | /bin/sh
-echo
-
 cat lob | ./myshell
 cat lob | /bin/sh
 echo
