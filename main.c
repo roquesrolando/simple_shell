@@ -33,12 +33,6 @@ int main(int ac, char **av, char **env)
 			continue;
 		}
 
-		/*if (_strcmp(commandLineArgs[0], "EMPTYX") == 0)
-		{
-			free(commandLineArgs);
-			continue;
-		}*/
-
 		pathname = getFullPath(patharray, commandLineArgs);
 
 		if (pathname == NULL)

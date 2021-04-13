@@ -28,6 +28,5 @@ char *pathInput(char *usrInput);
 int moveIndex(char *usrinput);
 char *_strdup(char *str);
 int _putchar(char c);
-char **handleEmptyString();
 
 #endif

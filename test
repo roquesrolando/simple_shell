@@ -24,8 +24,12 @@ echo "///" | ./myshell
 echo "///" | /bin/sh
 echo
 
+echo
 echo "" | ./myshell
 echo "" | /bin/sh
+echo
+
+echo AFTER EMPTY STRING
 echo
 
 echo "//pwd" | ./myshell

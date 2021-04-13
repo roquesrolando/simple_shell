@@ -25,22 +25,19 @@ char **input(void)
 		return (NULL);
 	}
 
-	if (length == 1)
+	if (length == 1 && (isatty(STDIN_FILENO) == 1))
 	{
 		while (length == 1)
 		{
 			_putchar('$');
 			_putchar(' ');
 			length = getline(&usrinput, &inputSize, stdin);
-
-			if (length == EOF)
-			{
-				free(usrinput);
-				return (NULL);
-			}
 		}
-		/*free(usrinput);
-		return (handleEmptyString());*/
+	}
+	if (length == 1 && (isatty(STDIN_FILENO) == 0))	
+	{
+		free(usrinput);
+		return (NULL);
 	}
 
 	usrinput[length - 1] = '\0';
