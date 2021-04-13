@@ -31,7 +31,8 @@ int moveIndex(char *usrinput)
 {
 	int count, index1 = 0;
 
-	for (count = 0; usrinput[index1] == 32 && usrinput[index1] != '\0'; count++)
+	for (count = 0; (usrinput[index1] == 32  || usrinput[index1] == '\t') 
+                    && usrinput[index1] != '\0'; count++)
 	{
 		index1++;
 

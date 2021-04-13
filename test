@@ -2,66 +2,69 @@ gcc -g -Wall -Werror -Wextra -pedantic *.c *.h -o myshell
 
 echo "/bin/pwd" | ./myshell
 echo "/bin/pwd" | /bin/sh
-echo
+echo --
 
 echo "hi/" | ./myshell
 echo "hi/" | /bin/sh
-echo
+echo --
 
 echo "pwd/" | ./myshell
 echo "pwd/" | /bin/sh
+echo --
 echo
-
+echo
 echo "echo hiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii" | ./myshell
 echo "echo hiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii" | /bin/sh
-echo 
+echo --
 
 echo "/bin/" | ./myshell
 echo "/bin/" | /bin/sh
-echo
+echo --
 
 echo "///" | ./myshell
 echo "///" | /bin/sh
-echo
+echo --
 
 echo
 echo "" | ./myshell
 echo "" | /bin/sh
-echo
+echo --
 
 echo AFTER EMPTY STRING
-echo
+echo --
 
 echo "//pwd" | ./myshell
 echo "//pwd" | /bin/sh
-echo
+echo --
 
 echo "     /biin/pwd" | ./myshell
-ehoc "     /biin/pwd" | /bin/sh
-echo
+echo "     /biin/pwd" | /bin/sh
+echo  --
 
 echo "bin/pwd" | ./myshell
 echo "bin/pwd" | /bin/sh
-echo
+echo  --
 
 echo "exit" | ./myshell
 echo "exit" | /bin/sh
-echo
+echo --
 
 cat lob | ./myshell
 cat lob | /bin/sh
-echo
+echo --
 
 cat filedoesnotexist | ./myshell
 cat filedoesnotexist | /bin/sh
-echo
+echo --
 
 echo "*" | ./myshell
 echo "*" | /bin/sh
-echo
+echo --
 
 echo "&&" | ./myshell
 echo "&&" | /bin/sh
+echo
 
-
-
+echo -e "\t  ls" | ./myshell
+echo -e "\t  ls" | /bin/sh
+echo
