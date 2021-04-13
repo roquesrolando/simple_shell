@@ -1,0 +1,66 @@
+gcc -g -Wall -Werror -Wextra -pedantic *.c *.h -o myshell
+
+echo "/bin/pwd" | ./myshell
+echo "/bin/pwd" | /bin/sh
+echo
+
+echo "hi/" | ./myshell
+echo "hi/" | ./bin/sh
+echo
+
+echo "pwd/" | ./myshell
+pwd/
+echo
+
+echo "echo hiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii" | ./myshell
+echo hiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii
+echo 
+
+echo "/bin/" | ./myshell
+echo "/bin/" | /bin/sh
+/bin/
+echo
+
+echo "///" | ./myshell
+///
+echo
+
+echo SEG FAULT
+echo "" | ./myshell
+echo
+
+echo
+echo
+echo
+
+echo "//pwd" | ./myshell
+//pwd
+echo
+
+echo "     /biin/pwd" | ./myshell
+     /biin/pwd
+echo
+
+echo "bin/pwd" | ./myshell
+bin/pwd
+echo
+
+echo "exit" | ./myshell
+echo "env" | ./myshell
+cat lob | ./myshell
+cat filedoesnotexist | ./myshell
+echo "*" | ./myshell
+echo "&&" | ./myshell
+
+
+[ctrl + D]
+[ctrl + C]
+cd
+
+
+
+
+
+
+
+
