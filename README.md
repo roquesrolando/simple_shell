@@ -83,14 +83,11 @@ main.c	path.c	execute.c	stringConcat.c
 **$ ls | ./myshell**  
 main.c	path.c	execute.c	stringConcat.c  
 
-**[ENTER MORE COMMAND EXMAPLES]**
-[OUTPUT]
+**$ pwd**  
+/home/vagrant/shell/simple_shell  
 
-**[ENTER MORE COMMAND EXMAPLES]**
-[OUTPUT]
-
-**[ENTER MORE COMMAND EXAMPLES]**
-[OUTPUT]
+**/bin/pwd**  
+/home/vagrant/shell/simple_shell  
 
 III. File Descriptions
 ----------------------
