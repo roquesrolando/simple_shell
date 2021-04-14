@@ -108,7 +108,7 @@ int checkIfPath(char *usrinput)
  */
 int verifyPath(char *usrinput, char **patharray)
 {
-	int index1, lastBracketIndex, matches = 0, count, count2;
+	int index1 = 0, lastBracketIndex = 0, matches = 0, count, count2;
 	char *pathChecker;
 
 	pathChecker = malloc(sizeof(char) * 50);
