@@ -28,13 +28,3 @@ int _strcmp2(char *s1, char *s2)
 	return (0);
 }
 
-/**
- * get_c - handles ^C
- *
- * @sig: the signal
- */
-void get_c(int sig)
-{
-	write(STDOUT_FILENO, "\n$ ", 3);
-	signal(sig, get_c);
-}

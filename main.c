@@ -14,7 +14,6 @@ int main(int ac, char **av, char **env)
 
 	if (ac == 500)
 
-	signal(SIGINT, get_c);
 	patharray = get_path(env);
 
 	while (1)
