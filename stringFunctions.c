@@ -94,3 +94,53 @@ int checkIfPath(char *usrinput)
 	}
 	return (checkpath);
 }
+
+/**
+ * verifyPath - function checks to see if its and actual
+ * PATH directory
+ * @usrinput: user input
+ * @patharray: array of path
+ * Return: 1 or 0
+ */
+int verifyPath(char *usrinput, char **patharray)
+{
+	int index1, lastBracketIndex, matches = 0, count, count2;
+	char *pathChecker;
+
+	pathChecker = malloc(sizeof(char) * 50);
+	index1 = moveIndex(usrinput);
+
+	for (count = index1 + 1; usrinput[count] != '\0'; count++)
+	{
+		if (usrinput[count] == '/')
+		{
+			lastBracketIndex = count;
+		}
+	}
+	count2 = index1;
+
+	for (count = 0; count2 < lastBracketIndex; count++)
+	{
+		pathChecker[count] = usrinput[count2];
+		count2++;
+	}
+	pathChecker[count] = '\0';
+
+	for (count = 0; patharray[count] != NULL; count++)
+	{
+		if ((_strcmp(pathChecker, patharray[count])) == 0)
+		{
+			matches = 1;
+			break;
+		}
+	}
+	free(pathChecker);
+
+	if (matches == 1)
+		return (1);
+
+	if (matches == 0)
+		return (0);
+
+	return (0);
+}

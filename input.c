@@ -2,9 +2,10 @@
 
 /**
  * input - function gets input from user
+ * @patharray: path array
  * Return: commandLineArgs
  */
-char **input(void)
+char **input(char **patharray)
 {
 	ssize_t length, allSpaces;
 	size_t inputSize = 50;
@@ -36,7 +37,7 @@ char **input(void)
 	}
 	if ((checkIfPath(usrinput)) == 1)
 	{
-		newInput = pathInput(usrinput);
+		newInput = pathInput(usrinput, patharray);
 		if (newInput == NULL)
 		{
 			free(newInput);

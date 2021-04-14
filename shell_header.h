@@ -13,7 +13,7 @@
 #include <dirent.h>
 #include <errno.h>
 
-char **input(void);
+char **input(char **patharray);
 int numberOfElementsInArray(char *usrinput);
 int moveIndex(char *usrinput);
 char *strConcat(char *s1, char *s2);
@@ -24,7 +24,7 @@ char *getFullPath(char **path, char **command);
 void freeDoublePointers(char **pointer);
 void printDoubleArray(char **pointer);
 void executeCommand(char *fullPath, char **commandLineArgs);
-char *pathInput(char *usrInput);
+char *pathInput(char *usrInput, char **patharray);
 int moveIndex(char *usrinput);
 char *_strdup(char *str);
 int _putchar(char c);
@@ -33,5 +33,6 @@ int checkIfInputAllSpaces(char *usrinput);
 int checkIfPath(char *usrinput);
 void checkIsAtty(void);
 char **handlesNullInput(char *usrinput);
+int verifyPath(char *usrinput, char **patharray);
 
 #endif

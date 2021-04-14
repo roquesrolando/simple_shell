@@ -19,7 +19,7 @@ int main(int ac, char **av, char **env)
 
 	while (1)
 	{
-		commandLineArgs = input();
+		commandLineArgs = input(patharray);
 
 		if (commandLineArgs == NULL)
 		{
