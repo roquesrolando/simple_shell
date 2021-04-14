@@ -35,11 +35,11 @@ char **input(void)
 	}
 	usrinput[length - 1] = '\0';
 
-	if ((_strcmp("exit", usrinput)) == 0)
+	/*if ((_strcmp("exit", usrinput)) == 0)
 	{
 		free(usrinput);
 		return (NULL);
-	}
+	}*/
 
 	for (count = 0; usrinput[count] != '\0'; count++)
 	{
