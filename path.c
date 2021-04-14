@@ -51,12 +51,14 @@ char **get_path(char **env)
  *  pathInput - function modifies user input and returns command
  * without the executable
  * @usrinput: input from user
+ * @patharray: path array
  * Return: returns pointer
  */
-char *pathInput(char *usrinput)
+char *pathInput(char *usrinput, char **patharray)
 {
 	int count, count2 = 0, index1 = 0, lastBracketIndex = 0, num = 0;
 	char *modedUsrInput;
+	int matches = 0;
 
 	modedUsrInput = malloc(sizeof(char) * 100);
 
@@ -71,12 +73,20 @@ char *pathInput(char *usrinput)
 			num++;
 		}
 	}
+	matches = verifyPath(usrinput, patharray);
+
+	if (matches == 0)
+	{
+		free(modedUsrInput);
+		return (usrinput);
+	}
 
 	if (usrinput[lastBracketIndex + 1] == '\0' || (num == 0))
 	{
 		free(modedUsrInput);
 		return (usrinput);
 	}
+	count2 = 0;
 	for (count = lastBracketIndex + 1; usrinput[count] != '\0'; count++)
 	{
 		modedUsrInput[count2] = usrinput[count];
