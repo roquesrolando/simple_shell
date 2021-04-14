@@ -13,8 +13,8 @@ int main(int ac, char **av, char **env)
 	char **commandLineArgs, **patharray, *fullPath, *pathname;
 
 	if (ac == 500)
-		printf("%s\n", av[0]);/*debugging purposes*/
 
+	signal(SIGINT, get_c);
 	patharray = get_path(env);
 
 	while (1)
