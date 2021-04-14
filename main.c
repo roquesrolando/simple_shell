@@ -39,7 +39,6 @@ int main(int ac, char **av, char **env)
 			exit(0);
 		}
 		pathname = getFullPath(patharray, commandLineArgs);
-
 		if (pathname == NULL)
 		{
 			freeDoublePointers(commandLineArgs);
@@ -49,8 +48,30 @@ int main(int ac, char **av, char **env)
 		executeCommand(fullPath, commandLineArgs);
 		free(fullPath);
 		freeDoublePointers(commandLineArgs);
-
 	}
-	free(patharray);
 	return (0);
+}
+
+/**
+ * checkIsAtty - function checks to see if prompt needs to be printed
+ */
+void checkIsAtty(void)
+{
+	if (isatty(STDIN_FILENO) == 1)
+	{
+		_putchar('$');
+		_putchar(' ');
+	}
+
+}
+
+/**
+ * handlesNullInput - functions checks for NULL input
+ * @usrinput: user or file input
+ * Return: NULL
+ */
+char **handlesNullInput(char *usrinput)
+{
+	free(usrinput);
+	return (NULL);
 }

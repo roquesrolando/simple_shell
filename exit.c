@@ -1,5 +1,10 @@
 #include "shell_header.h"
 
+/**
+ * exitString - function handles exit command
+ * @usrinput: user input
+ * Return: 0 if it is exit, 1 if it is not
+ */
 int exitString(char *usrinput)
 {
 	int index1, count;

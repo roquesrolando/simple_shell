@@ -31,8 +31,8 @@ int moveIndex(char *usrinput)
 {
 	int count, index1 = 0;
 
-	for (count = 0; (usrinput[index1] == 32  || usrinput[index1] == '\t') 
-                    && usrinput[index1] != '\0'; count++)
+	for (count = 0; (usrinput[index1] == 32  || usrinput[index1] == '\t')
+			&& usrinput[index1] != '\0'; count++)
 	{
 		index1++;
 
@@ -46,8 +46,9 @@ int moveIndex(char *usrinput)
 }
 
 /**
- *
- *
+ * checkIfInputAllSpaces - function checks to see if input is all spaces
+ * @usrinput: user input
+ * Return: 0 if it is not all spaces, 1 if it is all spaces
  */
 int checkIfInputAllSpaces(char *usrinput)
 {
@@ -61,4 +62,35 @@ int checkIfInputAllSpaces(char *usrinput)
 		}
 	}
 	return (1);
+}
+
+/**
+ *checkIfPath - function searches for '/' in order to identify path's entered
+ *@usrinput: input from user
+ *Return: checkpath
+ */
+int checkIfPath(char *usrinput)
+{
+	int count, checkpath = 0;
+
+	for (count = 0; usrinput[count] != '\0'; count++)
+	{
+		if (usrinput[count] == '/' && usrinput[count + 1] != '\0')
+		{
+			checkpath = 1;
+
+			return (checkpath);
+			/**
+			 * newInput = pathInput(usrinput);
+
+			if (newInput == NULL)
+			{
+				free(newInput);
+				return (getArray(usrinput));
+			}
+			return (getArray(newInput));
+			*/
+		}
+	}
+	return (checkpath);
 }

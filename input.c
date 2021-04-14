@@ -6,30 +6,21 @@
  */
 char **input(void)
 {
-	ssize_t length;
+	ssize_t length, allSpaces;
 	size_t inputSize = 50;
 	char *usrinput = NULL, *newInput = NULL;
-	int count, allSpaces;
 
-	if (isatty(STDIN_FILENO) == 1)
-	{
-		_putchar('$');
-		_putchar(' ');
-	}
-
+	checkIsAtty();
 	length = getline(&usrinput, &inputSize, stdin);
-
 	if (length == EOF || (length == 1 && (isatty(STDIN_FILENO) == 0)))
 	{
-		free(usrinput);
-		return (NULL);
+		return (handlesNullInput(usrinput));
 	}
 	if (length == 1 && (isatty(STDIN_FILENO) == 1))
 	{
 		while (length == 1)
 		{
-			_putchar('$');
-			_putchar(' ');
+			checkIsAtty();
 			length = getline(&usrinput, &inputSize, stdin);
 		}
 	}
@@ -38,27 +29,20 @@ char **input(void)
 
 	while (allSpaces == 1)
 	{
-		_putchar('$');
-		_putchar(' ');
-
+		checkIsAtty();
 		length = getline(&usrinput, &inputSize, stdin);
 		usrinput[length - 1] = '\0';
-
-	 	allSpaces = checkIfInputAllSpaces(usrinput);
+		allSpaces = checkIfInputAllSpaces(usrinput);
 	}
-
-	for (count = 0; usrinput[count] != '\0'; count++)
+	if ((checkIfPath(usrinput)) == 1)
 	{
-		if (usrinput[count] == '/' && usrinput[count + 1] != '\0')
+		newInput = pathInput(usrinput);
+		if (newInput == NULL)
 		{
-			newInput = pathInput(usrinput);
-			if (newInput == NULL)
-			{
-				free(newInput);
-				return (getArray(usrinput));
-			}
-			return (getArray(newInput));
+			free(newInput);
+			return (getArray(usrinput));
 		}
+		return (getArray(newInput));
 	}
 	free(newInput);
 	return (getArray(usrinput));
