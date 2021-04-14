@@ -6,7 +6,7 @@
  * @commandLineArgs: command along with options
  */
 
-void executeCommand(char *fullPath, char **commandLineArgs)
+int executeCommand(char *fullPath, char **commandLineArgs)
 {
 	int id, status;
 
@@ -14,11 +14,15 @@ void executeCommand(char *fullPath, char **commandLineArgs)
 
 	if (id == 0)
 	{
-		execve(fullPath, commandLineArgs, NULL);
+		if (execve(fullPath, commandLineArgs, NULL) == -1)
+		{
+			return (-1);
+		}
 	}
 	else
 	{
 		wait(&status);
 		EXIT_CODE = WEXITSTATUS(status);
 	}
+	return (0);
 }
