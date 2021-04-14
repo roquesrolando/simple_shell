@@ -29,6 +29,5 @@ int moveIndex(char *usrinput);
 char *_strdup(char *str);
 int _putchar(char c);
 int _strcmp2(char *s1, char *s2);
-int exitString(char *usrinput);
 
 #endif
