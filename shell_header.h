@@ -13,6 +13,8 @@
 #include <dirent.h>
 #include <errno.h>
 
+int __attribute((unused)) EXIT_CODE;
+
 char **input(char **patharray);
 int numberOfElementsInArray(char *usrinput);
 int moveIndex(char *usrinput);

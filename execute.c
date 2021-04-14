@@ -8,7 +8,7 @@
 
 void executeCommand(char *fullPath, char **commandLineArgs)
 {
-	int id;
+	int id, status;
 
 	id = fork();
 
@@ -18,7 +18,7 @@ void executeCommand(char *fullPath, char **commandLineArgs)
 	}
 	else
 	{
-		wait(NULL);
+		wait(&status);
+		EXIT_CODE = WEXITSTATUS(status);
 	}
-
 }

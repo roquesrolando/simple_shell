@@ -13,7 +13,6 @@ char *getFullPath(char **patharray, char **commandLineArgs)
 	struct dirent *binaryFiles = NULL;
 	int count;
 
-	errno = ENOENT;
 
 	for (count = 0; patharray[count] != NULL; count++)
 	{
@@ -21,6 +20,7 @@ char *getFullPath(char **patharray, char **commandLineArgs)
 		{
 			errno = EISDIR;
 			perror(commandLineArgs[0]);
+			EXIT_CODE = 126;
 			return (NULL);
 		}
 	}
@@ -37,7 +37,9 @@ char *getFullPath(char **patharray, char **commandLineArgs)
 		}
 		closedir(directory);
 	}
+	errno = ENOENT;
 	perror(commandLineArgs[0]);
+	EXIT_CODE = 127;
 	return (NULL);
 }
 
