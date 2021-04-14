@@ -34,5 +34,7 @@ int checkIfPath(char *usrinput);
 void checkIsAtty(void);
 char **handlesNullInput(char *usrinput);
 int verifyPath(char *usrinput, char **patharray);
+char *get_errors(char **av);
+void get_c(int sig);
 
 #endif
