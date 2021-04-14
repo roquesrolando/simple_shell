@@ -32,7 +32,12 @@ int main(int ac, char **av, char **env)
 			freeDoublePointers(commandLineArgs);
 			continue;
 		}
-
+		if (_strcmp(commandLineArgs[0], "exit") == 0)
+		{
+			freeDoublePointers(patharray);
+			freeDoublePointers(commandLineArgs);
+			exit(0);
+		}
 		pathname = getFullPath(patharray, commandLineArgs);
 
 		if (pathname == NULL)
