@@ -44,3 +44,21 @@ int moveIndex(char *usrinput)
 
 	return (index1);
 }
+
+/**
+ *
+ *
+ */
+int checkIfInputAllSpaces(char *usrinput)
+{
+	int count;
+
+	for (count = 0; usrinput[count] != '\0'; count++)
+	{
+		if (usrinput[count] != 32)
+		{
+			return (0);
+		}
+	}
+	return (1);
+}

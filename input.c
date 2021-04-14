@@ -9,7 +9,7 @@ char **input(void)
 	ssize_t length;
 	size_t inputSize = 50;
 	char *usrinput = NULL, *newInput = NULL;
-	int count;
+	int count, allSpaces;
 
 	if (isatty(STDIN_FILENO) == 1)
 	{
@@ -34,12 +34,18 @@ char **input(void)
 		}
 	}
 	usrinput[length - 1] = '\0';
+	allSpaces = checkIfInputAllSpaces(usrinput);
 
-	/*if ((_strcmp("exit", usrinput)) == 0)
+	while (allSpaces == 1)
 	{
-		free(usrinput);
-		return (NULL);
-	}*/
+		_putchar('$');
+		_putchar(' ');
+
+		length = getline(&usrinput, &inputSize, stdin);
+		usrinput[length - 1] = '\0';
+
+	 	allSpaces = checkIfInputAllSpaces(usrinput);
+	}
 
 	for (count = 0; usrinput[count] != '\0'; count++)
 	{
