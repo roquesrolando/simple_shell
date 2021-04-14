@@ -12,6 +12,10 @@ int numberOfElementsInArray(char *usrinput)
 
 	for (count = 0; usrinput[count] != '\0'; count++)
 	{
+		if (usrinput[count] == ' ' && usrinput[count + 1] == '\0')
+		{
+			return (lengthOfArray);
+		}
 		if ((usrinput[count] == 32 && usrinput[count + 1] != 32) ||
 				(count == 0 && usrinput[count] != 32))
 		{
