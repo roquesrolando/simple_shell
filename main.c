@@ -24,7 +24,7 @@ int main(int ac, char **av, char **env)
 		if (commandLineArgs == NULL)
 		{
 			freeDoublePointers(patharray);
-			exit(127);
+			exit(0);
 		}
 		if (_strcmp(commandLineArgs[0], "env") == 0)
 		{
