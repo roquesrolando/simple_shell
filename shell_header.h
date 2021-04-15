@@ -31,7 +31,7 @@ int _putchar(char c);
 int _strcmp2(char *s1, char *s2);
 int checkIfInputAllSpaces(char *usrinput);
 int checkIfPath(char *usrinput);
-void checkIsAtty(void);
+void prompt(void);
 char **handlesNullInput(char *usrinput);
 int verifyPath(char *usrinput, char **patharray);
 

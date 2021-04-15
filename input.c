@@ -11,7 +11,7 @@ char **input(char **patharray)
 	size_t inputSize = 50;
 	char *usrinput = NULL, *newInput = NULL;
 
-	checkIsAtty();
+	prompt();
 	length = getline(&usrinput, &inputSize, stdin);
 	if (length == EOF || (length == 1 && (isatty(STDIN_FILENO) == 0)))
 	{
@@ -21,7 +21,7 @@ char **input(char **patharray)
 	{
 		while (length == 1)
 		{
-			checkIsAtty();
+			prompt();
 			length = getline(&usrinput, &inputSize, stdin);
 		}
 	}
@@ -30,7 +30,7 @@ char **input(char **patharray)
 
 	while (allSpaces == 1)
 	{
-		checkIsAtty();
+		prompt();
 		length = getline(&usrinput, &inputSize, stdin);
 		usrinput[length - 1] = '\0';
 		allSpaces = checkIfInputAllSpaces(usrinput);

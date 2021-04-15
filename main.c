@@ -53,9 +53,9 @@ int main(int ac, char **av, char **env)
 }
 
 /**
- * checkIsAtty - function checks to see if prompt needs to be printed
+ * prompt - function checks to see if prompt needs to be printed
  */
-void checkIsAtty(void)
+void prompt(void)
 {
 	if (isatty(STDIN_FILENO) == 1)
 	{
