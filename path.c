@@ -7,7 +7,7 @@
  */
 char **get_path(char **env)
 {
-	char **patharray, *temp, *path = "PATH=";
+	char **patharray, *temp, *hold, *path = "PATH=";
 	const char *colon = ": =";
 	int count, count2, inputSize = 20, sizearray = 0;
 
@@ -31,7 +31,8 @@ char **get_path(char **env)
 			break;
 		}
 	}
-	temp = strtok(env[count], colon);
+	hold = _strdup(env[count]);
+	temp = strtok(hold, colon);
 	temp = strtok(NULL, colon);
 
 	count = 0;
@@ -42,8 +43,8 @@ char **get_path(char **env)
 		sizearray++;
 		temp = strtok(NULL, colon);
 	}
-
 	patharray[count] = NULL;
+	free(hold);
 	return (patharray);
 }
 

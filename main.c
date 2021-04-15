@@ -1,5 +1,6 @@
 #include "shell_header.h"
 
+void get_c(int sig);
 /**
  * main - our simple shell, reads command from the command line
  * and searches for the appropiate fullPath to execute
@@ -12,15 +13,13 @@ int main(int ac, char **av, char **env)
 {
 	char **commandLineArgs, **patharray, *fullPath, *pathname;
 
-	if (ac == 500)
-		printf("%s\n", av[0]);/*debugging purposes*/
-
+	(void)ac;
+	(void)av;
+	signal(SIGINT, get_c);
 	patharray = get_path(env);
-
 	while (1)
 	{
 		commandLineArgs = input(patharray);
-
 		if (commandLineArgs == NULL)
 		{
 			freeDoublePointers(patharray);
@@ -36,7 +35,7 @@ int main(int ac, char **av, char **env)
 		{
 			freeDoublePointers(patharray);
 			freeDoublePointers(commandLineArgs);
-			exit(0);
+			exit(EXIT_CODE);
 		}
 		pathname = getFullPath(patharray, commandLineArgs);
 		if (pathname == NULL)
@@ -45,7 +44,12 @@ int main(int ac, char **av, char **env)
 			continue;
 		}
 		fullPath = strConcat(pathname, commandLineArgs[0]);
-		executeCommand(fullPath, commandLineArgs);
+		if (executeCommand(fullPath, commandLineArgs) == -1)
+		{
+			free(fullPath);
+			freeDoublePointers(commandLineArgs);
+			exit(127);
+		}
 		free(fullPath);
 		freeDoublePointers(commandLineArgs);
 	}

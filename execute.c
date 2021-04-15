@@ -4,21 +4,26 @@
  * executeCommand - function exectues command
  * @fullPath: name of binary file that will execute
  * @commandLineArgs: command along with options
+ * Return: returns 0 if success
  */
 
-void executeCommand(char *fullPath, char **commandLineArgs)
+int executeCommand(char *fullPath, char **commandLineArgs)
 {
-	int id;
+	int id, status;
 
 	id = fork();
 
 	if (id == 0)
 	{
-		execve(fullPath, commandLineArgs, NULL);
+		if (execve(fullPath, commandLineArgs, NULL) == -1)
+		{
+			return (-1);
+		}
 	}
 	else
 	{
-		wait(NULL);
+		wait(&status);
+		EXIT_CODE = WEXITSTATUS(status);
 	}
-
+	return (0);
 }

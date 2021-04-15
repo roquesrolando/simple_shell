@@ -12,6 +12,10 @@ int numberOfElementsInArray(char *usrinput)
 
 	for (count = 0; usrinput[count] != '\0'; count++)
 	{
+		if (usrinput[count] == ' ' && usrinput[count + 1] == '\0')
+		{
+			return (lengthOfArray);
+		}
 		if ((usrinput[count] == 32 && usrinput[count + 1] != 32) ||
 				(count == 0 && usrinput[count] != 32))
 		{
@@ -104,7 +108,7 @@ int checkIfPath(char *usrinput)
  */
 int verifyPath(char *usrinput, char **patharray)
 {
-	int index1, lastBracketIndex, matches = 0, count, count2;
+	int index1 = 0, lastBracketIndex = 0, matches = 0, count, count2;
 	char *pathChecker;
 
 	pathChecker = malloc(sizeof(char) * 50);
