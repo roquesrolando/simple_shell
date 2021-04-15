@@ -56,17 +56,17 @@ char **input(char **patharray)
  */
 char **getArray(char *usrinput)
 {
-	int count, count2, index1 = 0, lengthOfArray = 0;
+	int count, count2, index1 = 0, sizeOfArr = 0;
 	char **commandLineArgs;
 
-	lengthOfArray = numberOfElementsInArray(usrinput);
-	commandLineArgs = malloc(sizeof(commandLineArgs) * (lengthOfArray + 1));
+	sizeOfArr = numberOfElementsInArray(usrinput);/*counts the args entered*/
+	commandLineArgs = malloc(sizeof(commandLineArgs) * (sizeOfArr + 1));
 	if (commandLineArgs == NULL)
 	{
 		free(usrinput);
 		return (NULL);
 	}
-	for (count = 0; count < lengthOfArray; count++)
+	for (count = 0; count < sizeOfArr; count++) /*allocate mem for double ptr*/
 	{
 		commandLineArgs[count] = malloc(sizeof(char) * 100);
 
@@ -80,20 +80,20 @@ char **getArray(char *usrinput)
 			return (NULL);
 		}
 	}
-	index1 = moveIndex(usrinput);
+	index1 = moveIndex(usrinput); /*handles spaces at beginning*/
 	for (count = 0; (count < 100) && (usrinput[index1] != '\0'); count++)
 	{
 		for (count2 = 0; usrinput[index1] != 32
 			&& usrinput[index1] != '\0'; count2++)
 		{
 			commandLineArgs[count][count2] = usrinput[index1];
-			index1++;
+			index1++; /*initiazlie arr to values from input EXCLUDING spaces*/
 		}
-		commandLineArgs[count][count2] = '\0';
+		commandLineArgs[count][count2] = '\0'; /*null at end of string*/
 		while (usrinput[index1] == 32)
-			index1++;
+			index1++; /*handles extra spaces between arguments*/
 	}
-	commandLineArgs[count] = NULL;
+	commandLineArgs[count] = NULL; /*marks end of 2D array*/
 	free(usrinput);
 	return (commandLineArgs);
 }
